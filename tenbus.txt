@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class Subnet{
+class subnet{
  public static void main(String args[])
  {
   Scanner sc = new Scanner(System.in);
@@ -13,12 +13,22 @@ class Subnet{
   bip += split_bip[i];
   }
   System.out.println("IP in binary is "+bip);
-  System.out.print("Enter the number of addresses: ");
-  int n = sc.nextInt();
-  int bits = (int)Math.ceil(Math.log(n)/Math.log(2)); 
-  System.out.println("Number of bits required for address = "+bits);
-  int mask = 32-bits;
-  System.out.println("The subnet mask is = "+mask);
+  System.out.print("Enter the subnet mask:");
+  int mask = sc.nextInt();
+  int bits = 32-mask;
+  if(mask>24){
+      int over = mask-24;
+      System.out.println("The No.of.networks :"+Math.pow(2,(mask-24)));
+      System.out.println("The host Portion:"+(Math.pow(2,(8-over))-2));
+  }else if(mask>16){
+    int over = mask-16;
+    System.out.println("The No.of.networks :"+Math.pow(2,(mask-16+8)));
+    System.out.println("The host Portion:"+(Math.pow(2,(8-over))-2));
+  }else{
+    int over = mask-8;
+    System.out.println("The No.of.networks :"+Math.pow(2,(mask+8)));
+    System.out.println("The host Portion:"+(Math.pow(2,(8-over))-2)); 
+  }
   int fbip[] = new int[32];
   for(int i=0; i<32;i++) fbip[i] = (int)bip.charAt(i)-48;
   for(int i=31;i>31-bits;i--)
