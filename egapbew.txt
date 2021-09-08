@@ -3,7 +3,7 @@ import java.net.*;
 
 public class HTTPClient {
     public static void main(String args[]) {
-        String hostName = "www.sunnetwrok.in";
+        String hostName = "www.geeksforgeeks.org";
         int portNumber = 80;
 
         try {
@@ -11,7 +11,7 @@ public class HTTPClient {
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            System.out.println("GET/HTTP/1.1\nHost:www.sunnetwork.in\n\n");
+            System.out.println("GET/HTTP/1.1\nHost:www.geeksforgeeks.org\n\n");
 
             String inputLine;
             while((inputLine = in.readLine()) != null) {
